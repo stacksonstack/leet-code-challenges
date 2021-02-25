@@ -44,7 +44,29 @@ let intervals4 = [
   [1, 4],
   [0, 1],
 ]; // [[0,4]]
-console.log(merge(intervals));
-console.log(merge(intervals2));
-console.log(merge(intervals3));
-console.log(merge(intervals4));
+// console.log(merge(intervals));
+// console.log(merge(intervals2));
+// console.log(merge(intervals3));
+// console.log(merge(intervals4));
+
+//REFACTORED TO WORK WITH EVERY EDGE CASE
+const merge = function (intervals) {
+    var shouldSkip = false;
+    intervals = intervals.sort(function (a, b) {    return a[0] - b[0];  });
+    var newArray = [];
+
+    for(let x = 0; x < intervals.length; x++) {
+        if (newArray.length == 0)  {
+        newArray.push(intervals[x])
+
+        } else if(newArray[newArray.length -1][1] < intervals[x][0]) {
+            newArray.push(intervals[x])
+
+        }
+            else { 
+            newArray[newArray.length -1][1] = Math.max(newArray[newArray.length -1][1], intervals[x][1])
+        }
+    } 
+    return newArray
+
+}
