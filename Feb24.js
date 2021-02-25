@@ -94,4 +94,33 @@ var numJewelsInStones = function (jewels, stones) {
 
 };
 
-console.log(numJewelsInStones("aA", "aAAbbbb"));
+// console.log(numJewelsInStones("aA", "aAAbbbb"));
+
+
+
+
+// Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+// You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+// You can return the answer in any order.
+
+var twoSum = function(nums, target) {
+    let newArray = [];
+    
+    nums.forEach((num, index, srcArray) => {
+        let counter = 0; 
+        while(counter <= srcArray.length) {
+            if(counter === index) return; 
+            if(num + srcArray[counter] == target) {
+                newArray.push(index, counter);
+                break;
+            } else { counter++; }
+        }
+    })
+return newArray
+}
+const number = [2,7,11,15] // [1,0]
+const target = 9
+
+console.log(twoSum(number,target))
