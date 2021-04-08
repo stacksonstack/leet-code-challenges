@@ -48,4 +48,16 @@ var kidsWithCandies = function(candies, extraCandies) {
 
 // console.log(kidsWithCandies([2,3,5,1,3], 3)) // [true,true,true,false,true]
 
+var _kidsWithCandies = function(candies, extraCandies) {
+    let maxCandies = Math.max(...candies)
+    let output = []
+    candies.forEach((candy)=>{
+        output.push((candy + extraCandies) >= maxCandies) 
+    })
+    return output
+};
+
+console.log(_kidsWithCandies([2,3,5,1,3], 3)) // [true,true,true,false,true]
+
+
 
