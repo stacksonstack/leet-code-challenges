@@ -16,3 +16,18 @@ var replaceElements = function (arr) {
     }
     return array.reverse();
   };
+
+  console.log(replaceElements([17,18,5,4,6,1])) // [18,6,6,6,1,-1]
+
+
+  var replaceElements2 = function (arr) {
+    var maxNumber = -1;
+    var array = [];
+    for (let x = arr.length - 1; x >= 0; x--) {
+      array.push(maxNumber);
+      maxNumber = Math.max(maxNumber, arr[x]);
+    }
+    return array.reverse();
+  };
+
+  console.log(replaceElements2([17,18,5,4,6,1])) // [18,6,6,6,1,-1]
