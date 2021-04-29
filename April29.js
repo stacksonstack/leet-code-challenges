@@ -30,4 +30,33 @@ var destCity = function(paths) {
     }
 };
 
-console.log(destCity([["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]))
+// console.log(destCity([["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]))
+
+var _destCity = function(paths) {
+    //arr[0] begin arr[-1] end of path
+    //arr =  ["B", "C"] \\ acc   ["D","B"] \\ cur
+    // ["D", "B", "C"] \\ acc ["B", "A"]
+    // return ["D", "B", "C", "A"]
+
+    let clearPath = paths.reduce((acc, curr) => { // curr = [p, p]
+        if(acc[curr[0]]) {
+            acc[curr[0]].zeroIndex += 1;
+        }
+        if(!acc[curr[1]]){
+            acc[curr[1]] = {zeroIndex: 0}
+        }
+        if(!acc[curr[0]]){
+            acc[curr[0]] = {zeroIndex: 1}
+        }
+        return acc
+    }, {}) 
+    // win case not a departure city aka no Zero indexes 
+    
+    for (const property in clearPath) {
+        if(clearPath[property]["zeroIndex"] == 0 ) {
+            return property
+        }
+    }
+};
+
+// console.log(_destCity([["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]))
